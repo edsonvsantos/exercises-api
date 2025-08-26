@@ -21,10 +21,10 @@ async function fetchCharacters(page){
             card.className = "card"
             card.innerHTML = `
                 <img src="${character.image}" alt="${character.name}">
-                <h3>${character.name}</h3>
-                <p><strong>Filmes:</strong>${character.race}</p>
-                <p><strong>Vídeo games:</strong>${character.gender}</p>
-                <p><strong>Vídeo games:</strong>${character.ki}</p>
+                <h2>${character.name}</h2>
+                <p><strong>Raça: </strong>${character.race}</p>
+                <p><strong>Gênero: </strong>${character.gender}</p>
+                <p><strong>Ki: </strong>${character.ki}</p>
 
             `
             resultsDiv.appendChild(card)

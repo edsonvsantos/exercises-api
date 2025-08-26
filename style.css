@@ -10,7 +10,7 @@ body {
     background: #f0f2f5;
     margin: 0;
     padding: 20px;
-    background-image: url('./bg.png');
+    background-image: url('./bg.webp');
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
@@ -62,8 +62,10 @@ h1 {
 .card {
     background: #000000c5;
     border-radius: 10px;
+    margin: 10px 20px;
     padding: 10px;
-    width: 200px;
+    width: 350px;
+    height: 500px;
     text-align: center;
     color: #fff;
     transition: all 200ms ease-in-out;
@@ -71,34 +73,36 @@ h1 {
 }
 
 .card img {
+    height: 350px;
     width: 100%;
     border-radius: 100%;
+    object-fit: contain;
     transition: all 200ms ease-in-out;
 }
 
 .card:hover {
-    box-shadow: rgba(88, 240, 46, 0.4) -5px 5px, rgba(62, 240, 46, 0.3) -10px 10px, rgba(78, 240, 46, 0.2) -15px 15px, rgba(78, 240, 46, 0.1) -20px 20px, rgba(82, 240, 46, 0.05) -25px 25px;
+    box-shadow: rgba(102, 21, 183, 0.4) -5px 5px, rgba(81, 17, 146, 0.4) -10px 10px, rgba(69, 14, 124, 0.4) -15px 15px, rgba(52, 10, 94, 0.4) -20px 20px, rgba(39, 7, 71, 0.4) -25px 25px;
 }
 
-.card:hover h3 {
-    color: #0ce768;
-    text-shadow: 0 2px 8px #0ce768;
+.card:hover h2 {
+    color: #d57412;
+    text-shadow: 0 2px 8px #d57412;
 }
 
 .card:hover img {
     border-radius: 10px;
 }
 
-.card h3 {
+.card h2 {
     margin: 10px 0 5px;
-    font-size: 22px;
+    font-size: 25px;
     color: #ffffff;
     font-weight: bolder;
     letter-spacing: 3px;
 }
 
 .card p {
-    font-size: 14px;
+    font-size: 20px;
     color: #dddddd93;
 }
 
@@ -107,6 +111,9 @@ h1 {
 }
 
 .card strong {
-    color: #0ce768;
+    color: #d57412;
     font-weight: bold;
+    font-size: 20px;
 }
+
+
