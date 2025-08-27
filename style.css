@@ -17,9 +17,9 @@ body {
 }
 
 h1 {
-    color: #fdfdfd;
+    color: #000000;
     margin-bottom: 20px;
-    text-shadow: 0 2px 8px #000000a2;
+    text-shadow: 0 2px 8px #5b5b5ba2;
     font-size: 4rem;
 }
 
@@ -33,6 +33,7 @@ h1 {
     border-radius: 8px;
     border: 1px solid #ccc;
     box-shadow: 0 2px 8px #000000a2;
+    color: black;
 }
 
 #searchBtn {
@@ -40,8 +41,8 @@ h1 {
     margin-left: 5px;
     border: none;
     border-radius: 8px;
-    background-color: #219150;
-    color: #fff;
+    background-color: #2c2d2c;
+    color: #ffffff;
     cursor: pointer;
     transition: 0.3s;
 }
@@ -64,13 +65,11 @@ h1 {
     border-radius: 10px;
     margin: 10px 20px;
     padding: 10px;
-    width: 350px;
+    width: 500px;
     height: 500px;
     text-align: center;
     color: #fff;
-    transition: all 200ms ease-in-out;
-    box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
-}
+    transition: all 200ms ease-in-out;}
 
 .card img {
     height: 350px;
@@ -81,12 +80,11 @@ h1 {
 }
 
 .card:hover {
-    box-shadow: rgba(102, 21, 183, 0.4) -5px 5px, rgba(81, 17, 146, 0.4) -10px 10px, rgba(69, 14, 124, 0.4) -15px 15px, rgba(52, 10, 94, 0.4) -20px 20px, rgba(39, 7, 71, 0.4) -25px 25px;
+    box-shadow: rgba(12, 12, 12, 0.864) -5px 5px, rgba(21, 20, 20, 0.541) -10px 10px, rgba(0, 0, 0, 0.499) -15px 15px;
 }
 
 .card:hover h2 {
     color: #d57412;
-    text-shadow: 0 2px 8px #d57412;
 }
 
 .card:hover img {
