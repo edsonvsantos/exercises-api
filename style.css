@@ -84,7 +84,7 @@ h1 {
 }
 
 .card:hover h2 {
-    color: #d57412;
+    color: #1991e7;
 }
 
 .card:hover img {
@@ -109,7 +109,7 @@ h1 {
 }
 
 .card strong {
-    color: #d57412;
+    color: #1991e7;
     font-weight: bold;
     font-size: 20px;
 }
