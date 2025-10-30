@@ -20,7 +20,7 @@ async function fetchExercises(muscle) {
         const response = await fetch(`https://api.api-ninjas.com/v1/exercises?muscle=${muscle}`, {
             method: "GET",
             headers: {
-                "X-Api-Key": "4LaR3eumIcD1XhDBIIe9lA==DBTOTA9lW2ji4TBW",
+                "X-Api-Key": "",
                 "Content-Type": "application/json"
             }
         });
@@ -137,3 +137,4 @@ searchBtn.addEventListener("click", () => {
 });
 
 // Não busca nada ao carregar — só mostra resultados após pesquisa
+
