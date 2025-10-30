@@ -3,22 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dragon Ball API</title>
+    <title>Exercises API</title>
     <link rel="stylesheet" href="style.css">
      
 </head>
 <body>
-    <h1>Dragon Ball - Personagens</h1>
-
-    <div class="search-box">
-        <input type="number" id="pageInput" min="1" placeholder="Digite uma página (1/6)">
-        <button id="searchBtn">Buscar</button>
-    </div>
+    <h1>Exercises</h1>
 
     <div id="results" class="results">
 
     
     </div>
+
+<div class="search-box">
+  <input type="text" id="pageInput" placeholder="Digite o músculo (ex: biceps)">
+  <div id="suggestions" class="suggestions"></div>
+  <button id="searchBtn">Buscar</button>
+</div>
+
 
 
    <script src="script.js"></script>
