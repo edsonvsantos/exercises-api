@@ -1,55 +1,68 @@
-const btn = document.getElementById('searchBtn');
-const input = document.getElementById('searchInput');
-const resultsDiv = document.getElementById('results');
+const apiKey = "";
 
-// Detecta automaticamente o backend (porta 3000 ou outra)
-const API_BASE =
-  window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost"
-    ? "http://localhost:3000" // servidor Node.js
-    : ""; // caso esteja hospedado junto
+const input = document.getElementById("alimento");
+const resultado = document.getElementById("resultado");
 
-btn.addEventListener('click', async () => {
+input.addEventListener("input", mostrarSugestoes);
+
+async function mostrarSugestoes() {
   const query = input.value.trim();
-  if (!query) {
-    resultsDiv.innerHTML = '<p>Digite um alimento.</p>';
+  resultado.innerHTML = "";
+
+  if (query.length === 0) return;
+
+  try {
+    const res = await fetch(
+      `https://api.nal.usda.gov/fdc/v1/foods/search?query=${encodeURIComponent(query)}&pageSize=10&api_key=${apiKey}`
+    );
+    const data = await res.json();
+
+    if (!data.foods || data.foods.length === 0) return;
+
+    // filtra apenas alimentos genéricos
+    const sugestoes = data.foods.filter(f =>
+      f.dataType === "Foundation" || f.dataType === "Survey (FNDDS)"
+    );
+
+    if (sugestoes.length === 0) return;
+
+    // cria lista de sugestões
+    const ul = document.createElement("ul");
+    ul.className = "sugestoes";
+
+    sugestoes.forEach(f => {
+      const li = document.createElement("li");
+      li.textContent = f.description;
+      li.addEventListener("click", () => mostrarCalorias(f));
+      ul.appendChild(li);
+    });
+
+    resultado.innerHTML = "";
+    resultado.appendChild(ul);
+
+  } catch (erro) {
+    console.error(erro);
+  }
+}
+
+function mostrarCalorias(food) {
+  // encontra Energy
+  const energia = food.foodNutrients.find(n =>
+    n.nutrientName.toLowerCase().includes("energy")
+  );
+  if (!energia) {
+    resultado.innerHTML = "Valor energético não encontrado.";
     return;
   }
 
-  resultsDiv.innerHTML = '<p>🔎 Buscando...</p>';
-
-  try {
-    const response = await fetch(`${API_BASE}/api/search?food=${encodeURIComponent(query)}`);
-
-    if (!response.ok) {
-      resultsDiv.innerHTML = `<p>❌ Erro: ${response.status} (${response.statusText})</p>`;
-      return;
-    }
-
-    // Tenta converter para JSON (evita erro "<!DOCTYPE..."")
-    const text = await response.text();
-    let data;
-    try {
-      data = JSON.parse(text);
-    } catch {
-      console.error("Resposta não era JSON:", text);
-      resultsDiv.innerHTML = "<p>❌ Erro: resposta inválida do servidor.</p>";
-      return;
-    }
-
-    if (!data.foods) {
-      resultsDiv.innerHTML = '<p>Nenhum resultado encontrado.</p>';
-      return;
-    }
-
-    const foods = data.foods.food;
-    resultsDiv.innerHTML = foods.map(f => `
-      <div class="food-item">
-        <strong>${f.food_name}</strong><br>
-        <small>${f.food_description}</small>
-      </div>
-    `).join('');
-  } catch (err) {
-    console.error(err);
-    resultsDiv.innerHTML = '<p>❌ Erro ao buscar alimentos.</p>';
+  let kcal = energia.value;
+  if (energia.unitName.toLowerCase() === "kj") {
+    kcal = energia.value / 4.184; // converte kJ → kcal
   }
-});
+
+  resultado.innerHTML = `
+    <strong>${food.description}</strong><br>
+    ${kcal.toFixed(1)} kcal (100 g)
+  `;
+  input.value = food.description; // coloca o nome no input
+}

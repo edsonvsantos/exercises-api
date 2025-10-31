@@ -3,20 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nutrition - Contador de Calorias</title>
+  <title>Contador de Calorias</title>
   <link rel="stylesheet" href="nutrition.css">
 </head>
 <body>
+  <h1>Contador de Calorias</h1>
   <div class="container">
-    <h1>🥗 Nutrition</h1>
-    <p>Busque um alimento para ver suas calorias e nutrientes</p>
-
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Ex: banana, arroz, frango...">
-      <button id="searchBtn">Buscar</button>
-    </div>
-
-    <div id="results"></div>
+    <input type="text" id="alimento" placeholder="Digite o alimento...">
+    <button id="buscar">Buscar</button>
+    <div class="resultado" id="resultado"></div>
   </div>
 
   <script src="nutrition.js"></script>
